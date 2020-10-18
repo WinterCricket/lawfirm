@@ -24,6 +24,18 @@ if(! function_exists('setup')):
 		add_image_size('team', 475, 475, array('center', 'center'));
 	}
 
+
 endif;
 
-?>
+function scripts_header(){
+	wp_enqueue_style('init', get_stylesheet_uri());
+}
+
+function scripts_footer(){
+	//wp_enqueue_scripts('init', get_template_directory_uri().'js/init.js', array('jquery'));
+}
+
+add_action('after_setup_theme', 'setup');
+add_action('wp_enqueue_scripts', 'scripts_header');
+//add_action('wp_footer', 'scripts_footer');
+
